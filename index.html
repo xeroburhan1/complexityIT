@@ -269,6 +269,9 @@ button[aria-expanded="true"] .chev{transform:rotate(180deg)}
 .s-tile:nth-child(2){background:#E5251B;transform:rotate(1deg)}
 .s-tile:nth-child(3){background:linear-gradient(135deg,#00A9FF,#7B4DFF 60%,#F0509B);transform:rotate(-.8deg)}
 .s-tile:hover{transform:rotate(0) translateY(-4px)}
+.s-tile.s-soon{cursor:default}
+.s-tile.s-soon:hover{transform:rotate(1deg)}
+.s-tile b .soon{display:inline-block;vertical-align:middle;margin-left:8px}
 .s-tile svg{width:44px;height:44px;flex:none}
 .s-tile b{display:block;font-size:1.25rem;line-height:1.2}
 .s-tile span{display:block;opacity:.9;font-size:.92rem;line-height:1.4}
@@ -738,9 +741,9 @@ dialog::backdrop{background:rgba(12,8,10,.6)}
       <p class="lead">ব্যাচের নোটিশ, নতুন ব্যাচের খবর আর ফ্রি কনটেন্ট সবার আগে পেতে ফলো করুন।</p>
     </div>
     <div class="soc">
-      <a class="s-tile" href="https://www.facebook.com/" target="_blank" rel="noopener" data-link="facebook"><svg fill="currentColor" aria-hidden="true"><use href="#i-fb"/></svg><span><b>Facebook Page</b><span>নোটিশ ও আপডেট</span></span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-      <a class="s-tile" href="https://www.youtube.com/" target="_blank" rel="noopener" data-link="youtube"><svg fill="currentColor" aria-hidden="true"><use href="#i-yt"/></svg><span><b>YouTube</b><span>ক্লাস ও টিপস দেখুন</span></span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-      <a class="s-tile" href="https://m.me/" target="_blank" rel="noopener" data-link="messenger"><svg fill="currentColor" aria-hidden="true"><use href="#i-ms"/></svg><span><b>Messenger</b><span>সরাসরি মেসেজ দিন</span></span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <a class="s-tile" href="https://www.facebook.com/groups/204927375054219" target="_blank" rel="noopener" data-link="facebook"><svg fill="currentColor" aria-hidden="true"><use href="#i-fb"/></svg><span><b>Facebook Group</b><span>নোটিশ ও আপডেট</span></span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <div class="s-tile s-soon" aria-label="YouTube, coming soon"><svg fill="currentColor" aria-hidden="true"><use href="#i-yt"/></svg><span><b>YouTube <span class="soon">Coming soon</span></b><span>শিগগিরই আসছে</span></span></div>
+      <a class="s-tile" href="https://m.me/kisora.raya.349387" target="_blank" rel="noopener" data-link="messenger"><svg fill="currentColor" aria-hidden="true"><use href="#i-ms"/></svg><span><b>Messenger</b><span>সরাসরি মেসেজ দিন</span></span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
     </div>
   </div>
 </section>
@@ -788,9 +791,8 @@ dialog::backdrop{background:rgba(12,8,10,.6)}
         <a class="logo" href="#top"><svg aria-hidden="true"><use href="#i-logo"/></svg><span><b>Complexity</b><small style="display:block">IT Job Care</small></span></a>
         <p>সরকারি ও ব্যাংকের IT চাকরির প্রস্তুতির জন্য কিশোর রায়ের পার্সোনাল কোচিং।</p>
         <div class="f-soc">
-          <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook" data-link="facebook"><svg fill="currentColor"><use href="#i-fb"/></svg></a>
-          <a href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="YouTube" data-link="youtube"><svg fill="currentColor"><use href="#i-yt"/></svg></a>
-          <a href="https://m.me/" target="_blank" rel="noopener" aria-label="Messenger" data-link="messenger"><svg fill="currentColor"><use href="#i-ms"/></svg></a>
+          <a href="https://www.facebook.com/groups/204927375054219" target="_blank" rel="noopener" aria-label="Facebook Group" data-link="facebook"><svg fill="currentColor"><use href="#i-fb"/></svg></a>
+          <a href="https://m.me/kisora.raya.349387" target="_blank" rel="noopener" aria-label="Messenger" data-link="messenger"><svg fill="currentColor"><use href="#i-ms"/></svg></a>
         </div>
       </div>
       <div><h4>Explore</h4><ul><li><a href="#mentor">মেন্টর</a></li><li><a href="#batches">ব্যাচ ও ফি</a></li><li><a href="#test">ফ্রি MCQ টেস্ট</a></li><li><a href="#results">সাফল্য</a></li></ul></div>
@@ -819,7 +821,7 @@ dialog::backdrop{background:rgba(12,8,10,.6)}
     </div>
     <div class="acts">
       <button class="btn btn-ghost" id="copy" type="button"><svg class="ico" aria-hidden="true"><use href="#i-copy"/></svg>মেসেজ কপি করুন</button>
-      <a class="btn btn-accent" id="msgr" href="https://m.me/" target="_blank" rel="noopener" data-link="messenger"><svg class="ico fill" aria-hidden="true"><use href="#i-ms"/></svg>Messenger-এ যান</a>
+      <a class="btn btn-accent" id="msgr" href="https://m.me/kisora.raya.349387" target="_blank" rel="noopener" data-link="messenger"><svg class="ico fill" aria-hidden="true"><use href="#i-ms"/></svg>Messenger-এ যান</a>
     </div>
     <p class="hint" id="hint" aria-live="polite">মেসেজ পাঠালে পেমেন্টের পদ্ধতি ও পরবর্তী ধাপ আমরা জানিয়ে দেব।</p>
   </div>
@@ -833,15 +835,14 @@ dialog::backdrop{background:rgba(12,8,10,.6)}
 <script>
 /* ============ EDIT HERE: content that is still a placeholder ============ */
 const SAMPLE = true; // set false once real fees, counts, names and photos are in. Entries marked sample:true then disappear.
-const LINKS = {      // replace with the real page / channel / Messenger links
-  facebook: "https://www.facebook.com/",
-  youtube: "https://www.youtube.com/",
-  messenger: "https://m.me/"
+const LINKS = {
+  facebook: "https://www.facebook.com/groups/204927375054219",
+  messenger: "https://m.me/kisora.raya.349387"
 };
 const BATCHES = [
-  { id:"b9", name:"Batch 9", type:"Regular batch", status:"ongoing", duration:"1 year", when:"Running now", fee:12000, enrolled:143, enrolledLabel:"জন ভর্তি", outline:"regular" },
-  { id:"bbad", name:"BB AD ICT Special Batch", type:"Special batch", status:"ongoing", duration:"6 months", when:"Running now", extra:["Includes","80 classes, 5 exams"], fee:6500, enrolled:96, enrolledLabel:"জন ভর্তি", outline:"bbad" },
-  { id:"b10", name:"Batch 10", type:"Regular batch", status:"upcoming", duration:"1 year", when:"Starts April 2027", fee:12000, prebook:10000, enrolled:38, enrolledLabel:"জন প্রি-বুক করেছেন", outline:"regular", featured:true }
+  { id:"b9", name:"Batch 9", type:"Regular batch", status:"ongoing", duration:"1 year", when:"Running now", fee:8150, enrolled:143, enrolledLabel:"জন ভর্তি", outline:"regular" },
+  { id:"bbad", name:"BB AD ICT Special Batch", type:"Special batch", status:"ongoing", duration:"6 months", when:"Running now", extra:["Includes","80 classes, 5 exams"], fee:4080, enrolled:96, enrolledLabel:"জন ভর্তি", outline:"bbad" },
+  { id:"b10", name:"Batch 10", type:"Regular batch", status:"upcoming", duration:"1 year", when:"Starts April 2027", fee:8150, prebook:7500, enrolled:38, enrolledLabel:"জন প্রি-বুক করেছেন", outline:"regular", featured:true }
 ];
 // photo: add an image URL or data URI to show a real photo. Without one, an initial is shown.
 const TESTIMONIALS = [
@@ -971,8 +972,8 @@ function paintSheet(){
     });
   }
   $("#sheet-msg").value = b
-    ? `আসসালামু আলাইকুম। আমি Complexity IT Job Care-এর "${b.name}"-এ ${up ? "প্রি-বুক" : "ভর্তি"} হতে চাই। আমার নাম: `
-    : `আসসালামু আলাইকুম। আমি Complexity IT Job Care-এ ভর্তি হতে চাই। আমার নাম: `;
+    ? `হ্যালো, আমি Complexity IT Job Care-এর "${b.name}"-এ ${up ? "প্রি-বুক" : "ভর্তি"} হতে চাই। আমার নাম: `
+    : `হ্যালো, আমি Complexity IT Job Care-এ ভর্তি হতে চাই। আমার নাম: `;
 }
 function openSheet(id){
   cur = byId[id] ? id : null; paintSheet();
