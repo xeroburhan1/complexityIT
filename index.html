@@ -312,14 +312,29 @@ footer li a:hover{text-decoration:underline}
 /* topic tiles (hero) + pastel palette */
 .p1{--pbg:var(--p1);--pfg:var(--s1)}.p2{--pbg:var(--p2);--pfg:var(--s2)}.p3{--pbg:var(--p3);--pfg:var(--s3)}
 .p4{--pbg:var(--p4);--pfg:var(--s4)}.p5{--pbg:var(--p5);--pfg:var(--s5)}.p6{--pbg:var(--p6);--pfg:var(--s6)}
-.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%;max-width:940px;margin-top:18px}
-.tile{background:var(--pbg);border-radius:20px;padding:14px 12px 12px;display:flex;flex-direction:column;gap:6px;text-align:left;align-items:flex-start}
-.tile:nth-child(odd){transform:rotate(-1.2deg)}.tile:nth-child(even){transform:rotate(1deg)}
-.tile .ico{width:46px;height:46px;stroke:var(--pfg);stroke-width:1.5;align-self:center;margin:8px 0 6px}
-.tile b{font-size:.95rem;line-height:1.25}
+.tiles{width:100%;max-width:1200px;margin-top:18px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 14px,#000 calc(100% - 14px),transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 14px,#000 calc(100% - 14px),transparent 100%)}
+.tiles-marquee{display:flex;width:max-content;animation:topics-marquee 110s linear infinite}
+.tiles-track{display:flex;flex:none;gap:14px;padding:4px 7px}
+.tiles-track[aria-hidden="true"]{display:flex}
+.tile{width:180px;height:164px;background:var(--pbg);border:1px solid rgba(21,15,13,.05);border-radius:20px;padding:16px 14px;display:grid;grid-template-rows:minmax(76px,1fr) auto;gap:10px;text-align:left;align-items:stretch}
+.tile .ico{width:50px;height:50px;stroke:var(--pfg);stroke-width:1.5;place-self:center}
+.tile b{min-height:2.5em;font-size:1rem;line-height:1.25;align-self:end;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
 .tile small{font:500 10px/1.2 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 .more-mod{font:500 11px/1.4 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-@media (min-width:760px){.tiles{grid-template-columns:repeat(6,1fr);gap:14px}}
+@keyframes topics-marquee{to{transform:translateX(-50%)}}
+@media (max-width:759px){
+  .tiles{width:calc(100% + 32px);max-width:none;margin:18px -16px 0}
+  .tiles-track{gap:10px;padding:4px 5px}
+  .tile{height:164px;padding:14px 12px;border-radius:18px;gap:8px}
+  .tile .ico{width:48px;height:48px}
+  .tiles:hover .tiles-marquee{animation-play-state:paused}
+}
+@media (prefers-reduced-motion:reduce){
+  .tiles{overflow-x:auto;scrollbar-width:none}
+  .tiles::-webkit-scrollbar{display:none}
+  .tiles-marquee{animation:none}
+  .tiles-track[aria-hidden="true"]{display:none}
+}
 
 /* free test */
 .test{display:grid;gap:28px;align-items:start}
@@ -569,14 +584,7 @@ dialog::backdrop{background:rgba(12,8,10,.6)}
     <div class="chips" aria-label="Target posts">
       <span class="chip">BB AD (ICT)</span><span class="chip">AP (ICT)</span><span class="chip">SO (IT)</span>
     </div>
-    <div class="tiles" aria-label="Topics we cover">
-      <div class="tile p1"><svg class="ico" aria-hidden="true"><use href="#m-db"/></svg><b>DBMS</b></div>
-      <div class="tile p2"><svg class="ico" aria-hidden="true"><use href="#m-tree"/></svg><b>Data Structure</b></div>
-      <div class="tile p3"><svg class="ico" aria-hidden="true"><use href="#m-globe"/></svg><b>Networking</b></div>
-      <div class="tile p4"><svg class="ico" aria-hidden="true"><use href="#m-gate"/></svg><b>Digital Logic</b></div>
-      <div class="tile p5"><svg class="ico" aria-hidden="true"><use href="#m-gear"/></svg><b>Operating System</b></div>
-      <div class="tile p6"><svg class="ico" aria-hidden="true"><use href="#m-code"/></svg><b>C Programming</b></div>
-    </div>
+    <div class="tiles" id="topics" aria-label="Topics we cover"><div class="tiles-marquee" id="topics-marquee"></div></div>
   </div>
 </section>
 
@@ -894,6 +902,18 @@ const fmt = n => "৳" + n.toLocaleString("en-US");
 const icon = (id, cls="") => `<svg class="ico ${cls}" aria-hidden="true"><use href="#i-${id}"/></svg>`;
 const mic = (id, cls="") => `<svg class="ico ${cls}" aria-hidden="true"><use href="#m-${id}"/></svg>`;
 const live = a => a.filter(x => SAMPLE || !x.sample);
+
+(function(){
+  const marquee = $("#topics-marquee");
+  const track = el("div", "tiles-track");
+  MODULES.forEach(([name, , moduleIcon], index) => {
+    const tile = el("div", `tile p${index % 6 + 1}`, `${mic(moduleIcon)}<b></b>`);
+    tile.querySelector("b").textContent = name;
+    track.appendChild(tile);
+  });
+  marquee.append(track, track.cloneNode(true));
+  marquee.lastElementChild.setAttribute("aria-hidden", "true");
+})();
 
 document.querySelectorAll("[data-sample]").forEach(n => n.hidden = !SAMPLE);
 document.querySelectorAll("[data-link]").forEach(a => a.href = LINKS[a.dataset.link]);
