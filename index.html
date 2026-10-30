@@ -1010,7 +1010,7 @@ function dbmsCard(n, regular){
 }
 const NOTES_HTML = () => `
     <div class="notes">
-      <div class="nbox n-w"><h4>${icon("doc")}BB AD Special Written Note</h4><ul>
+      <div class="nbox n-w"><h4>${icon("doc")}Special Written Note</h4><ul>
         <li>${chk}Important written notes</li><li>${chk}Detailed explanation</li><li>${chk}Banking sector focused</li><li>${chk}Exam oriented content</li></ul></div>
       <div class="nbox n-m"><h4>${icon("mcq")}MCQ Note</h4><ul>
         <li>${chk}Chapter based MCQs</li><li>${chk}BB AD previous MCQs</li><li>${chk}Explanation with answers</li><li>${chk}Exam focused practice</li></ul></div>
@@ -1021,7 +1021,7 @@ function outlineView(cfg){
   wrap.innerHTML = `
     <div class="o-head"><span class="eyebrow">${cfg.eyebrow}</span>
       <h2 id="o-title">${total} ক্লাসের <span class="grad">পুরো ম্যাপ</span></h2>
-      <p class="lead">${mods.length}টি মডিউল, প্রতিটিতে কত ক্লাস আর কোন ক্লাসে কী পড়ানো হবে, সব এক নজরে।</p></div>
+      <p class="lead">${mods.length}টি মডিউলে ক্লাসের সংখ্যা এক নজরে।</p></div>
     <div class="o-top">
       <div class="stat3">
         <div class="stat"><strong>${total}</strong><span>Classes</span></div>
